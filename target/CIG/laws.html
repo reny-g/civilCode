@@ -1,0 +1,449 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title></title>
+		<link rel="stylesheet" href="bootstrap-4.5.0-dist/css/bootstrap.min.css">
+		<script src="js/juqery.js"></script>
+		<script src="bootstrap-4.5.0-dist/js/bootstrap.bundle.min.js"></script>
+
+	</head>
+	<body class="bg-light">
+		<nav class=" navbar navbar-expand-md navbar-dark bg-primary my-2">
+			<div class="navbar-collapse">
+				<ul class="navbar-nav">
+					<li class="nav-item active">
+						<img src="image/logo_1.png" >
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="#">答题挑战</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="#">案件实例</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="#">法律全文</a>
+					</li>
+				</ul>	
+			</div>
+			<div class="d-flex justify-content-end">
+				<ul class="navbar-nav">
+					<li class="nav-item active">
+						<a class="nav-link" href="#">登录</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="#">注册</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<!-- 头部 -->
+		<div class="header bg-info" style="height: 25rem;background-image:url(image/book.jpg)">
+			<nav class="navbar navbar-expand-md navbar-dark">
+				<div class="d-flex justify-content-around" style="width: 125rem;">
+					<ul class="nav nav-pills ml-auto mr-auto" id="nav-tab" role="tablist">
+						<li class="nav-item mr-3">
+							<a class="nav-link active" id="nav-document-tab" data-toggle="tab" href="#nav-document" role="tab" aria-controls="nav-document" aria-selected="true"><p>案例搜索</p></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="nav-laws-tab" data-toggle="tab" href="#nav-laws" role="tab" aria-controls="nav-laws" aria-selected="false"><p>法规查询</p></a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<!-- 面板区 -->
+			<div class="tab-content" align="center" id="nav-tabContent">
+				<div class="tab-pane fade show active m-auto bg-red" align="center" style="width:100%;text-align:center" id="nav-document" role="tabpanel" aria-labelledby="nav-document-tab">
+					<form class="form-inline">
+						<input class="form-control ml-auto mr-2 mr-sm-1 w-50" maxlength="255" type="search" placeholder="搜索案例">
+						<button class="btn bg-primary mr-auto my-sm-1" type="submit">开始检索</button>
+						 <!-- style="background-color: rgb(17,152,218);" --> 
+					</form>
+				</div>
+				<div class="tab-pane fade" align="center" style="width:100%;text-align:center"  id="nav-laws" role="tabpanel" aria-labelledby="nav-laws-tab">
+					<form class="form-inline">
+						<input type="text" class="form-control jufa-main-search main-search ml-auto mr-2 w-50" maxlength="255" autocomplete="off" id="searchConObj" placeholder="搜索法规">
+						<ul class="drop-option" id="searchTipsObj" style="display: none;"></ul>
+						<!--历史记录-->
+						<ul class="history" id="case_history_list" style="display: none;"></ul>
+						<!--历史记录./-->
+						<span class="input-group-btn mr-auto">
+						    <button class="btn bg-primary main-btn-lg jufa-main-search-46px" type="button" id="newSearchObj">开始检索</button>
+						</span>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="container bg-light">
+			<header>文章推荐</header>
+			<div class="list-group">
+			  <a href="#" class="list-group-item list-group-item-action">
+			    <div class="d-flex w-100 justify-content-between">
+			      <h5 class="mb-1">周强：坚持以习近平法治思想武装头脑指导实践</h5>
+			      <small>3 days ago</small>
+			    </div>
+			    <p class="mb-1">11月18日上午，最高人民法院党组召开会议，传达学习贯彻中央全面依法治国工作会议精神，研究贯彻落实意见。最高人民法院...</p>
+			    <small>来源：中国法院网</small>
+			  </a>
+			  <a href="#" class="list-group-item list-group-item-action">
+			    <div class="d-flex w-100 justify-content-between">
+			      <h5 class="mb-1">周强：坚持以习近平法治思想武装头脑指导实践</h5>
+			      <small class="text-muted">3 days ago</small>
+			    </div>
+			    <p class="mb-1">11月18日上午，最高人民法院党组召开会议，传达学习贯彻中央全面依法治国工作会议精神，研究贯彻落实意见。最高人民法院...</p>
+			    <small class="text-muted">来源：中国法院网</small>
+			  </a>
+			  <a href="#" class="list-group-item list-group-item-action">
+			    <div class="d-flex w-100 justify-content-between">
+			      <h5 class="mb-1">周强：坚持以习近平法治思想武装头脑指导实践</h5>
+			      <small class="text-muted">3 days ago</small>
+			    </div>
+			    <p class="mb-1">11月18日上午，最高人民法院党组召开会议，传达学习贯彻中央全面依法治国工作会议精神，研究贯彻落实意见。最高人民法院...</p>
+			    <small class="text-muted">来源：中国法院网</small>
+			  </a>
+			</div>
+			<button class="btn btn-primary" type="button">换一换</button>
+		</div>
+		<div class="container">
+			<h3 class="m-3">目录</h3>
+			<div class="row border mt-4">
+				第一编&nbsp;&nbsp;&nbsp;总则
+			</div>
+			<div class="row mb-3">
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第一章<br />基本规定</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第二章<br />自然人</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第三章<br />法人</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第四章<br />非法人组织</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第五章<br />民事权利</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第六章<br />民事法律行为</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第七章<br />代理</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第八章<br />民事责任</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第九章<br />诉讼时效</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第十章<br />期间计算	</a>
+				</div>
+			</div>			
+			<div class="row border mt-4">
+				第二编&nbsp;&nbsp;&nbsp;物权
+			</div>
+			<div class="row border">
+				第一分编&nbsp;&nbsp;&nbsp;通则
+			</div>
+			<div class="row">
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第一章<br />	一般规定</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第二章<br />物权的设立、变更、转让和消灭</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第三章<br />物权的保护</a>
+				</div>
+			</div>
+			<div class="row border">
+				第二分编&nbsp;&nbsp;&nbsp;所有权
+			</div>
+			<div class="row">
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第四章<br />一般规定</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第五章<br />国家所有权和集体所有权、私人所有权</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第六章<br />业主的建筑物区分所有权</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第七章<br />相邻关系</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第八章<br />共有</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第九章<br />所有权取得的特别规定</a>
+				</div>
+			</div>
+			<div class="row border">
+				第三分编&nbsp;&nbsp;&nbsp;用益物权
+			</div>
+			<div class="row">
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第十章<br />一般规定</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第十一章<br />土地承包经营权</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第十二章<br />建设用地使用权</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第十三章<br />宅基地使用权</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第十四章<br />居住权</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第十五章<br />地役权</a>
+				</div>
+			</div>
+			<div class="row border">
+				第四分编&nbsp;&nbsp;&nbsp;担保物权
+			</div>
+			<div class="row">
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第十六章<br />一般规定</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第十七章<br />抵押权</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第十八章<br />质权</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第十九章<br />留置权</a>
+				</div>				
+			</div>
+			<div class="row border">
+				第五分编&nbsp;&nbsp;&nbsp;占有
+			</div>
+			<div class="row">
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第二十章<br />占有</a>
+				</div>
+			</div>
+			<div class="row border mt-4">
+				第三编&nbsp;&nbsp;&nbsp;合同
+			</div>
+			<div class="row border">
+				第一分编&nbsp;&nbsp;&nbsp;通则
+			</div>
+			<div class="row">
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第一章<br />一般规定</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第二章<br />合同的订立</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第三章<br />合同的效力</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第四章<br />合同的履行</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第五章<br />合同的保全</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第六章<br />合同的变更和转让</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第七章<br />合同的权利义务终止</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第八章<br />违约责任</a>
+				</div>
+			</div>
+			<div class="row border">
+				第二分编&nbsp;&nbsp;&nbsp;典型合同
+			</div>
+			<div class="row">
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第九章<br />买卖合同</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第十章<br />供用电、水、气、热力合同</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第十一章<br />赠与合同</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第十二章<br />借款合同</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第十三章<br />保证合同</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第十四章<br />租赁合同</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第十五章<br />融资租赁合同</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第十六章<br />保理合同</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第十七章<br />承揽合同</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第十八章<br />建设工程合同</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第十九章<br />运输合同</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第二十章<br />技术合同</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第二十一章<br />保管合同</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第二十二章<br />仓储合同</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第二十三章<br />委托合同</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第二十四章<br />物业服务合同</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第二十五章<br />行纪合同</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第二十六章<br />中介合同</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第二十七章<br />合伙合同</a>
+				</div>
+			</div>
+			<div class="row border">
+				第三分编&nbsp;&nbsp;&nbsp;准合同
+			</div>
+			<div class="row">
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第二十八章<br />无因管理</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第二十九章<br />不当得利</a>
+				</div>
+			</div>
+			<div class="row border mt-4">
+				第四编&nbsp;&nbsp;&nbsp;人格权
+			</div>
+			<div class="row">
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第一章<br />一般规定</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第二章<br />生命权、身体权和健康权</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第三章<br />姓名权和名称权</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第四章<br />肖像权</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第五章<br />名誉权和荣誉权</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第六章<br />隐私权和个人信息保护</a>
+				</div>
+			</div>
+			<div class="row border mt-4">
+				第五编&nbsp;&nbsp;&nbsp;婚姻家庭
+			</div>
+			<div class="row">
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第一章<br />一般规定</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第二章<br />结婚</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第三章<br />家庭关系</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第四章<br />离婚</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第五章<br />收养</a>
+				</div>
+			</div>
+			<div class="row border mt-4">
+				第六编&nbsp;&nbsp;&nbsp;继承
+			</div>
+			<div class="row">
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第一章<br />一般规定</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第二章<br />法定继承</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第三章<br />遗嘱继承和遗赠</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第四章<br />遗产的处理</a>
+				</div>
+			</div>
+			<div class="row border mt-4">
+				第七编&nbsp;&nbsp;&nbsp;侵权责任
+			</div>
+			<div class="row">
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第一章<br />一般规定</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第二章<br />损害赔偿</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第三章<br />责任主体的特殊规定</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第四章<br />产品责任</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第五章<br />机动车交通事故责任</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第六章<br />医疗损害责任</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第七章<br />环境污染和生态破坏责任</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第八章<br />高度危险责任</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第九章<br />饲养动物损害责任</a>
+				</div>
+				<div class="col-sm border">
+					<a href="#" class="text-dark">第十章<br />建筑物和物件损害责任</a>
+				</div>
+			</div>
+			<div class="row border mt-4">
+				<a href="#" class="text-dark">附则</a>
+			</div>
+		</div>
+		<footer>
+			<div style="height: 7rem; background-color: #0056B3;">
+				sfadasdwqdssfa
+			</div>
+		</footer>
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+	</body>
+</html>
