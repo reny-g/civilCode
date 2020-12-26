@@ -1,0 +1,27 @@
+.laws_footer{
+	height: 6.25rem;
+	width: 100%;
+	color: #55aaff;
+}
+.blog-footer {
+    padding: 2.5rem 0;
+    color: #999;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-top: .05rem solid #e5e5e5;
+}
+ p#back-to-top{
+            position:fixed;
+            display:none;
+            bottom:100px;
+            right:80px;
+        }
+
+.boxCenter{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0
+    margin: auto;
+}
