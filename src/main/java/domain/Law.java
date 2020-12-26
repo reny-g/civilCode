@@ -4,6 +4,9 @@ package domain;
  * @author 吴仁杨
  */
 public class Law {
+    /**
+     * Law民法条文对象
+     */
     int id = 0;
     String part = " ";
     String partName = " ";

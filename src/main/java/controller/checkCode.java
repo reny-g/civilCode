@@ -23,16 +23,13 @@ import java.util.Properties;
 /**
  * @author 吴仁杨
  */
-@WebServlet("/in")
-public class LoginIn extends HttpServlet {
+@WebServlet("/checkCode")
+public class checkCode extends HttpServlet {
 
     private Properties props = new Properties();
     private Producer kaptchaProducer = null;
     private String sessionKeyValue = null;
     private String sessionKeyDateValue = null;
-
-    public LoginIn() {
-    }
 
     @Override
     public void init(ServletConfig conf) throws ServletException {
