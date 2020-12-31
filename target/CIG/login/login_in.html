@@ -7,10 +7,50 @@
     <script src="../js/juqery.js"></script>
 </head>
 <body>
-<body>
-<h2>Hello World!</h2>
-<p>测试代码</p>
-<img id="img" alt="验证码" width="100" height="36" src="/cig/in" />
+
+<div class="container">
+    <div class="top-nav"></div>
+    <div class="mid-body align-self-center container">
+        <form action="/in">
+
+            <div class="col-3">
+                <label class="sr-only" for="inlineFormInputGroupName">用户名</label>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">U</div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroupName" placeholder="用户名">
+                </div>
+            </div>
+            <div class="col-3">
+                <label class="sr-only" for="inlineFormInputGroupPassword">密码</label>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">P</div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroupPassword" placeholder="密码">
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="autoSizingCheck">
+                    <label class="form-check-label" for="autoSizingCheck">
+                        记住登录
+                    </label>
+                </div>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-2">登录</button>
+            </div>
+            <div class="col-auto">
+                <div class="small d-inline">没有账号？立即注册</div>
+                <div class="small d-inline">忘记密码</div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<img id="img" alt="验证码" width="100" height="36" src="/cig/checkCode" />
 <script>
     $("#img").click(function (){
         this.src+=("?id="+Math.random());

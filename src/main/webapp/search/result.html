@@ -4,20 +4,68 @@
     <meta charset="UTF-8">
     <title>民法典</title>
     <link rel="stylesheet" href="../bootstrap-4.5.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="">
     <script src="../js/juqery.js"></script>
+    <script src="../vendor/pagenation/jqpaginator.min.js"></script>
     <script src="../bootstrap-4.5.0-dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="inputKeyWords ">
+    <div class="container mt-2">
+        <div class="inputKeyWords mb-lg-4 mb-md-2 mb-sm-1 p-2 align-self-center fixed-top">
             <form action="">
                 <input type="text" placeholder="输入关键字">
-                <button type="submit">搜索</button>
+                <button type="submit" class="btn ">搜索</button>
             </form>
-        </div>
-        <div id="showResult" class="showResult ">
+        </div>]
+        <div class="my-4">共15条结果</div>
+        <div id="showResult" class="showResult p-2">
+
+            <div class="col-9">
+
+                <div class="item mb-2">
+                    <div class="head"><a href="">物权</a>/<a href="">通则</a>/<a href="">物权的设立、变更、转让和消灭</a>/<a href="">不动产权登记</a></div>
+                    <div class="body text-truncate">第二百零九条　不动产物权的设立、变更、转让和消灭，经依法登记，发生效力；未经登记，不发生效力，但是法律另有规定的除外。
+                        依法属于国家所有的自然资源，所有权可以不登记。</div>
+                </div>
+                <div class="item mb-2">
+                    <div class="head"><a href="">物权/</a><a href="">通则</a>/<a href="">物权的设立、变更、转让和消灭</a>/<a href="">不动产权登记</a></div>
+                    <div class="body">第二百零九条　不动产物权的设立、变更、转让和消灭，经依法登记，发生效力；未经登记，不发生效力，但是法律另有规定的除外。
+                        依法属于国家所有的自然资源，所有权可以不登记。</div>
+                </div>
+
+
+            </div>
+
+            <div class="col-3"></div>
 
         </div>
+
+        <nav class="Page navigation example">
+            <ul class="pagination" id="pagination"></ul>
+        </nav>
     </div>
 </body>
+<script>
+    $(function () {
+        $.jqPaginator('#pagination', {
+            // totalPages: 100, //设置分页的总页数
+            totalCounts: 100, //设置分页的总条目数
+            pageSize: 6,
+            visiblePages: 5, //设置最多显示的页码数（例如有100也，当前第1页，则显示1 - 7页）
+            currentPage: 1,//当前页
+            first: '<li class="first page-item"><a class="page-link" href="javascript:;">First</a></li>',
+            prev: '<li class="prev page-item"><a class="page-link" href="javascript:;">Previous</a></li>',
+            next: '<li class="next page-item"><a class="page-link" href="javascript:;">Next</a></li>',
+            last: '<li class="last page-item"><a class="page-link" href="javascript:;">Last</a></li>',
+            page: '<li class="page page-item"><a class="page-link" href="javascript:;">{{page}}</a></li>',
+            onPageChange: function (num, type) {
+                //页面变化回调函数
+                if (type == "change") {
+                    console.log(num);//当前页码
+                    $('#text').html('pagination 当前第' + num + '页');
+                }
+            }
+        });
+    });
+</script>
 </html>

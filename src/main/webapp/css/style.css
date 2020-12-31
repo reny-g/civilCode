@@ -1,0 +1,10 @@
+body {
+    font-family: "Microsoft YaHei UI";
+}
+
+
+
+.showResult .item .head{
+    background-color: rgba(241,248,255,0.5);
+    color: rgba(3,102,217,1);
+}
