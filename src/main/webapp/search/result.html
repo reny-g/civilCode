@@ -4,55 +4,201 @@
     <meta charset="UTF-8">
     <title>民法典</title>
     <link rel="stylesheet" href="../bootstrap-4.5.0-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../css/style.css">
     <script src="../js/juqery.js"></script>
     <script src="../vendor/pagenation/jqpaginator.min.js"></script>
     <script src="../bootstrap-4.5.0-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/inputValidate.js"></script>
+    <script src="../js/echarts.js"></script>
 </head>
-<body>
-    <div class="container mt-2">
-        <div class="inputKeyWords mb-lg-4 mb-md-2 mb-sm-1 p-2 align-self-center fixed-top">
-            <form action="">
-                <input type="text" placeholder="输入关键字">
-                <button type="submit" class="btn ">搜索</button>
+<body class="no-gutters">
+    <div class="top-nav">
+        <nav class="navbar navbar-light bg-light justify-content-md-start">
+            <a class="navbar-brand mr-3" href="#">
+                <a href="../index.html"><img src="../image/logo_1.png" width="50px" height="50px" ></a>
+                民法小助手
+            </a>
+            <form class="form-inline my-2 my-lg-0 ml-3">
+                <div class="input-field ">
+                    <div class="input-select form-control">
+                        <select data-trigger="" name="choices-single-defaul">
+                            <option placeholder="" class="no-gutters">法律条文</option>
+                            <option>典型案例</option>
+                            <option>裁判文书</option>
+                        </select>
+                    </div>
+                </div>
+                <input id="inputWord" class="form-control" type="search" placeholder="搜索关键字" aria-label="Search">
+                <input id="search" class="icon form-control" type="button"  value="搜索" aria-label="Search">
             </form>
-        </div>]
-        <div class="my-4">共15条结果</div>
-        <div id="showResult" class="showResult p-2">
+        </nav>
+    </div>
+    <div class="container mt-2">
+        <div class="nav-container">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">全部</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link my-disabled" href="#" tabindex="-1" aria-disabled="true">法律条文</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">案例</a>
+                </li>
+            </ul>
+        </div>
+        <div class="appBar mt-n1 mb-3 text-secondary">
+            <div id="totalResult" class="d-inline-block ml-3">共153条结果</div>
+            <div id="duration" class="d-inline-block">(用时0.12秒)</div>
+        </div>
+        <div class="row bg-success"></div>
+        <div id="showResult" class="showResult row min-vh-100">
 
-            <div class="col-9">
+            <div id="laws" class="col col-9">
 
-                <div class="item mb-2">
+                <div class="item mb-3">
                     <div class="head"><a href="">物权</a>/<a href="">通则</a>/<a href="">物权的设立、变更、转让和消灭</a>/<a href="">不动产权登记</a></div>
-                    <div class="body text-truncate">第二百零九条　不动产物权的设立、变更、转让和消灭，经依法登记，发生效力；未经登记，不发生效力，但是法律另有规定的除外。
+                    <div class="body border border-success" style="min-height: 48px;" >第二百零九条　Hello world,how are tou不动产物权的设立、变更、转让和消灭，经依法登记，发生效力；未经登记，不发生效力，但是法律另有规定的除外。
+                        依法属于国家所有的自然资源，所有权可以不登记。第二百零九条　Hello world,how are tou不动产物权的设立、变更、转让和消灭，经依法登记，发生效力；未经登记，不发生效力，但是法律另有规定的除外。
                         依法属于国家所有的自然资源，所有权可以不登记。</div>
                 </div>
-                <div class="item mb-2">
-                    <div class="head"><a href="">物权/</a><a href="">通则</a>/<a href="">物权的设立、变更、转让和消灭</a>/<a href="">不动产权登记</a></div>
-                    <div class="body">第二百零九条　不动产物权的设立、变更、转让和消灭，经依法登记，发生效力；未经登记，不发生效力，但是法律另有规定的除外。
+                <div class="item mb-3">
+                    <div class="head"><a href="">物权</a>/<a href="">通则</a>/<a href="">物权的设立、变更、转让和消灭</a>/<a href="">不动产权登记</a></div>
+                    <div class="body">第二百零九条　Hello world,how are tou不动产物权的设立、变更、转让和消灭，经依法登记，发生效力；未经登记，不发生效力，但是法律另有规定的除外。
                         依法属于国家所有的自然资源，所有权可以不登记。</div>
                 </div>
-
 
             </div>
-
-            <div class="col-3"></div>
-
+            <div class="pie"></div>
+<!--            画布容器-->
+            <div id="main" style="
+    position: absolute;
+    right: 70px;
+    top: 70px;
+    /*画布大小*/
+    width: 500px;
+    height: 338px;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    padding: 0px;
+    margin: 0px;
+    vertical-align: baseline;
+    border-width: 0px;" class="col-4 d-inline-block"></div>
         </div>
 
+        <div class="bottomNav ml-2 text-dark">共0页,当前第0页</div>
         <nav class="Page navigation example">
             <ul class="pagination" id="pagination"></ul>
         </nav>
     </div>
+    <footer style="background-color: #0B183D; color: #79C940">
+        联系方式：11011023
+    </footer>
 </body>
 <script>
+    let keyword = "";
+    let totalNum = 13;
+    let pageSize = 13;
+    let currentPage = 1;
+    let searchResult;
+    //图标异步获取
+    var myChart = echarts.init(document.getElementById('main'));
+    $(document).ready(function () {
+        keyword = getUrlQueryString().keyword;
+        console.log(keyword);
+        myChart.showLoading();flashJqpage();
+        //顺序不能变（垃圾代码）
+        flashSearchResult();
+        flashSearchInfo();
+        flashJqpage();
+        flashbBottomNav();
+        flashChartJson();
+    });
     $(function () {
+        flashJqpage();
+    });
+    $("#search").click(function (){
+        keyword = document.getElementById("inputWord").value;
+        if (!checkService.isEmpty(keyword)) {
+            myChart.showLoading();
+            //顺序不能变（垃圾代码）
+            flashSearchResult();
+            flashSearchInfo();
+            flashJqpage();
+            flashbBottomNav();
+            flashChartJson();
+        } else {
+            alert("输入为空或不是汉字!");
+            return ;
+        }
+    });
+    function getRootPath(){
+    //获取当前网址
+        var curWwwPath=window.document.location.href;
+    //获取主机地址之后的目录
+        var pathName=window.document.location.pathname;
+        var pos=curWwwPath.indexOf(pathName);
+    //获取主机地址
+        var localhostPaht=curWwwPath.substring(0,pos);
+    //获取带"/“的项目名
+        var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);
+        return(localhostPaht+projectName+"/");
+    }
+    function flashSearchResult() {
+        $.ajax({
+            type: "POST",
+            url: getRootPath()+"doc-search",
+            async: false,
+            data: { "keyword": keyword, "pageNo": (currentPage-1)*pageSize,"pageSize": pageSize },
+            dataType: "json",
+            success:function (res) {
+                let html = '';
+                res.map(function (item,index) {
+                    html+=('<div class="item mb-3">'+
+                        '<div class="head"><a href="">'+"物权"+'</a>/<a href="">'+"通则"+'</a>/<a href="">'+"物权的设立、变更、转让和消灭"+'</a>/<a href="">'+"不动产权登记"+'</a></div>'+
+                        '<div class="body  border-success" style="min-height: 48px;" >'+'<a>'+item.content+'</a>'+item.contentName+'</div>'+
+                        '</div>');
+                });
+                $("#laws").html(html);
+                searchResult = res;
+                flashContent();
+                // 省略号
+                $(".---------item .body").each(function(){
+                    const maxwidth = 135;
+                    if($(this).text().length > maxwidth){
+                        $(this).text($(this).text().substring(0,maxwidth));
+                        $(this).html($(this).html()+'...');
+                    }
+                });
+            }
+        });
+    }
+    function flashSearchInfo() {
+        $.ajax({
+            type: "POST",
+            url: getRootPath()+"search-info",
+            async: false,
+            dataType: "json",
+            success:function (res) {
+                let html = '';
+                totalNum = res.totalNum;
+                console.log(res);
+                $("#totalResult").text("共"+totalNum+"条结果");
+                $("#duration").text("(用时"+res.time+"秒)")
+            }
+        });
+    }
+    function flashbBottomNav() {
+        $(".bottomNav").text("共"+Math.round(totalNum/pageSize)+"页,当前第"+currentPage+"页");
+    }
+    //分页
+    function flashJqpage() {
         $.jqPaginator('#pagination', {
             // totalPages: 100, //设置分页的总页数
-            totalCounts: 100, //设置分页的总条目数
-            pageSize: 6,
-            visiblePages: 5, //设置最多显示的页码数（例如有100也，当前第1页，则显示1 - 7页）
-            currentPage: 1,//当前页
+            totalCounts: totalNum, //设置分页的总条目数
+            pageSize: pageSize,
+            visiblePages: 6, //设置最多显示的页码数（例如有100也，当前第1页，则显示1 - 7页）
+            currentPage: currentPage,//当前页
             first: '<li class="first page-item"><a class="page-link" href="javascript:;">First</a></li>',
             prev: '<li class="prev page-item"><a class="page-link" href="javascript:;">Previous</a></li>',
             next: '<li class="next page-item"><a class="page-link" href="javascript:;">Next</a></li>',
@@ -61,11 +207,146 @@
             onPageChange: function (num, type) {
                 //页面变化回调函数
                 if (type == "change") {
-                    console.log(num);//当前页码
-                    $('#text').html('pagination 当前第' + num + '页');
+                    console.log("当前页"+num);//当前页码
+                    currentPage = num;
+                    $('.text').html('当前第' + num + '页');
+                    flashSearchResult();
+
+                    flashbBottomNav();
                 }
             }
         });
+    }
+    //标题文本
+    function flashContent() {
+        $.ajax({
+            url:getRootPath()+"content.json",
+            type:"POST",
+            dataType:"json",
+            data: searchResult,
+            success:function (res) {
+                let heads = document.getElementsByClassName("head");
+                res.forEach(function (item,index) {
+                    let html = "<a href=\"\">"+item.partName+"</a>" +
+                        "\><a href=\"\">"+item.subPartName+"</a>\><a href=\"\">"+item.sectionName+"</a><a href=\"\">"+""+"</a>";
+                    heads[index].innerHTML = html;
+                });
+            }
+        });
+    }
+    function getUrlQueryString() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        console.log(url);
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+            }
+        }
+        console.log(theRequest);
+        return theRequest;
+    };
+    // 绘制图表。
+    echarts.init(document.getElementById('main')).setOption({
+        series: {
+            name: '关键词分布',
+            radius: '60%',
+            type: 'pie',
+            data: [
+                {name: '第一编　总则', value: 1212},
+                {name: '第二编　物权', value: 2323},
+                {name: '第三编　合同', value: 1919},
+                {name: '第四编　人格权', value: 1919},
+                {name: '第五编　婚姻家庭', value: 1919},
+                {name: '第六编　继承', value: 1919},
+                {name: '第七编　侵权责任', value: 1919}
+            ]
+        }
     });
+
+    // 该函数设置了三个图表
+    function flashChartJson() {
+        $.ajax({
+            type: "GET",
+            url: getRootPath()+"echart.json",
+            async: false,
+            dataType: "json",
+            success:function (data) {
+                myChart.hideLoading();
+                console.log(data);
+                myChart.setOption({
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: '{a} <br/>{b}: {c} ({d}%)'
+                    },
+                    //
+                    legend: {
+                        orient: 'horizontal',
+                        left: 7,
+                        bottom: 2,
+                        data: [
+                            {name: '第一编　总则', value: data.fone},
+                            {name: '第二编　物权', value: data.two},
+                            {name: '第三编　合同', value: data.three},
+                            {name: '第四编　人格权', value: data.four},
+                            {name: '第五编　婚姻家庭', value: data.five},
+                            {name: '第六编　继承', value: data.six},
+                            {name: '第七编　侵权责任', value: data.seven}
+                        ]
+                    },
+                    series: [
+                        {
+                            name: '关键词分布',
+                            type: 'pie',
+                            radius: '50%',
+                            left: 12,
+                            label: {
+                                formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+                                backgroundColor: '#eee',
+                                borderColor: '#aaa',
+                                borderWidth: 1,
+                                borderRadius: 4,
+                                rich: {
+                                    a: {
+                                        color: '#999',
+                                        lineHeight: 22,
+                                        align: 'center'
+                                    },
+                                    hr: {
+                                        borderColor: '#aaa',
+                                        width: '100%',
+                                        borderWidth: 0.5,
+                                        height: 0
+                                    },
+                                    b: {
+                                        fontSize: 12,
+                                        lineHeight: 33
+                                    },
+                                    per: {
+                                        color: '#eee',
+                                        backgroundColor: '#334455',
+                                        //标题框内外边距
+                                        padding: [2, 18],
+                                        borderRadius: 2
+                                    }
+                                }
+                            },
+                            data: [
+                                {name: '第一编　总则', value: data.fone},
+                                {name: '第二编　物权', value: data.two},
+                                {name: '第三编　合同', value: data.three},
+                                {name: '第四编　人格权', value: data.four},
+                                {name: '第五编　婚姻家庭', value: data.five},
+                                {name: '第六编　继承', value: data.six},
+                                {name: '第七编　侵权责任', value: data.seven}
+                            ]
+                        }
+                    ]
+                });
+            }
+        });
+    }
 </script>
 </html>

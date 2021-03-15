@@ -1,17 +1,605 @@
+
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Hello</title>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>民法小助手</title>
+		<link rel="stylesheet" href="./bootstrap-4.5.0-dist/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="./css/laws.css" type="text/css"/>
+		<script src="./js/juqery.js"></script>
+		<script src="js/inputValidate.js"></script>
+		<script src="./bootstrap-4.5.0-dist/js/bootstrap.bundle.min.js" ></script>
+	</head>
+	<body class="bg-light">
+		<!-- 导航栏 -->
+		<nav class=" navbar navbar-expand-md navbar-dark" style="background-color: rgb(115, 115, 115);">
+			<a href="asddsa.html"><img src="image/logo_1.png" width="70px" height="70px" ></a>
+			<div class="navbar-collapse">
+				<ul class="navbar-nav">
+					<li class="nav-item active mr-2 ">
+						<a class="btn btn-dark text-white" href="https://h5.thepaper.cn/html/interactive/2020/05/minfadian50wen/index.html" target="_blank">民法典50问答</a>
+					</li>
+					<li class="nav-item active mr-2">
+						<a class="btn btn-dark text-white" href="display/laws_all.html" target="_blank">法律全文</a>
+					</li>
+					<li class="nav-item active mr-2">
+						<a class="btn btn-dark text-white" href="display/lawCase.html" target="_blank">案件实例</a>
+					</li>
+				</ul>	
+			</div>
+			<div class="d-flex justify-content-end">
+				<ul id="loginDisplay" class="navbar-nav">
+					<li class="nav-item active border-right border-white">
+						<a class="badge text-white" href="login/login_in.html" target="_blank">登录</a>
+					</li>
+					<li class="nav-item active">
+						<a class="badge  text-white" href="login/login_on.html" target="_blank">注册</a>
+					</li>
+				</ul>
+				<div id="quit" class="btn badge badge-dark"></div>
+			</div>
 
-</head>
-<body>
-
-<h2>Hello World!</h2>
-<p>测试代码</p>
-<img alt="验证码" width="100" height="36"  @click="changeImage" src="in" ref="checkCode"/>
-<script>
-
-</script>
-</body>
+		</nav>
+		<!-- 搜索栏 -->
+		<div class="header container" style="height: 200px;width: 1200px; background-image:url(image/)">
+			<nav class="navbar navbar-expand-md navbar-dark">
+				<div class="d-flex justify-content-around" style="width: 125rem;">
+					<ul class="nav nav-tabs ml-auto mr-auto" id="nav-tab" role="tablist">
+						<li class="nav-item mr-3">
+							<a class="btn nav-link active"  href="javascript:void(0);" id="nav-document-tab" data-toggle="tab" role="tab" aria-controls="nav-document" aria-selected="true"><p>法规查询</p></a>
+						</li>
+						<li class="nav-item">
+							<a class="btn nav-link"  href="javascript:void(0);" id="nav-laws-tab" data-toggle="tab" role="tab" aria-controls="nav-laws" aria-selected="false"><p>案例搜索</p></a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<!-- 搜索面板区 -->
+			<div class="tab-content" align="center" id="nav-tabContent">
+				<div class="tab-pane fade show active" align="center" style="width:100%;text-align:center" id="nav-document" role="tabpanel" aria-labelledby="nav-document-tab">
+					<form class="form-inline">
+						<input id="input1" class="form-control ml-auto mr-2 mr-sm-1 w-50" maxlength="255" type="search" placeholder="搜索法规">
+						<button id="searchBtn1" class="btn my-green mr-auto my-sm-1 text-white" type="button">开始检索</button>
+						<!-- style="background-color: rgb(17,152,218);" -->
+					</form>
+				</div>
+				<div class="tab-pane fade" align="center" style="width:100%;text-align:center"  id="nav-laws" role="tabpanel" aria-labelledby="nav-laws-tab">
+					<form class="form-inline">
+						<input id="input2" type="text" class="form-control jufa-main-search main-search ml-auto mr-2 w-50" maxlength="255" autocomplete="off" id="searchConObj" placeholder="搜索案例">
+						<button id="searchBtn2" class="btn my-green mr-auto my-sm-1 text-white" type="button">开始检索</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- 文章推荐 -->
+		<div class="container my-3 bg-light">
+			<header>文章推荐</header>
+			<div id="recommend_passage" class="list-group">
+			  <a href="#" target="_blank" class="list-group-item list-group-item-action">
+			    <div class="d-flex w-100 justify-content-between">
+			      <h5 class="mb-1">周强：坚持以习近平法治思想武装头脑指导实践</h5>
+			      <small>3 days ago</small>
+			    </div>
+			    <p class="mb-1">11月18日上午，最高人民法院党组召开会议，传达学习贯彻中央全面依法治国工作会议精神，研究贯彻落实意见。最高人民法院...</p>
+			    <small>来源：中国法院网</small>
+			  </a>
+			  <a href="#" target="_blank" class="list-group-item list-group-item-action">
+			    <div class="d-flex w-100 justify-content-between">
+			      <h5 class="mb-1">周强：坚持以习近平法治思想武装头脑指导实践</h5>
+			      <small class="text-muted">3 days ago</small>
+			    </div>
+			    <p class="mb-1">11月18日上午，最高人民法院党组召开会议，传达学习贯彻中央全面依法治国工作会议精神，研究贯彻落实意见。最高人民法院...</p>
+			    <small class="text-muted">来源：中国法院网</small>
+			  </a>
+			  <a href="#" target="_blank" class="list-group-item list-group-item-action">
+			    <div class="d-flex w-100 justify-content-between">
+			      <h5 class="mb-1">周强：坚持以习近平法治思想武装头脑指导实践</h5>
+			      <small class="text-muted">date</small>
+			    </div>
+			    <p class="mb-1">11月18日上午，最高人民法院党组召开会议，传达学习贯彻中央全面依法治国工作会议精神，研究贯彻落实意见。最高人民法院...</p>
+			    <small class="text-muted">来源：中国法院网</small>
+			  </a>
+			</div>
+			<button id="flashPassage" class="btn btn-primary" type="button">换一换</button>
+		</div>
+		<!-- 文章推荐 -->
+		<!-- 目录导航板块 -->
+		<div class="container bg-light" id="accordionExample">
+			<h3 class="m-3">目录</h3>
+			<div class="row border mt-4" id="headingOne">
+				<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+				  第一编&nbsp;&nbsp;&nbsp;总则
+				</button>
+			</div>
+			<div id="collapseOne" class="row mb-3 collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+				<div class="col-sm border">
+					<a href="page/part1/chapter1.html" target="_blank" class="text-dark">第一章<br />基本规定</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part1/chapter2.html" target="_blank" class="text-dark">第二章<br />自然人</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part1/chapter3.html" target="_blank" class="text-dark">第三章<br />法人</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part1/chapter4.html" target="_blank" class="text-dark">第四章<br />非法人组织</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part1/chapter5.html" target="_blank" class="text-dark">第五章<br />民事权利</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part1/chapter6.html" target="_blank" class="text-dark">第六章<br />民事法律行为</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part1/chapter7.html" target="_blank" class="text-dark">第七章<br />代理</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part1/chapter8.html" target="_blank" class="text-dark">第八章<br />民事责任</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part1/chapter9.html" target="_blank" class="text-dark">第九章<br />诉讼时效</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part1/chapter10.html" target="_blank" class="text-dark">第十章<br />期间计算	</a>
+				</div>
+			</div>			
+			<div class="row border mt-4" id="headingTwo">
+				<div class="p-2 text-left">
+				 第二编&nbsp;&nbsp;&nbsp;物权
+				</div>
+			</div>
+			<div class="row border" id="collapseTwo" aria-labelledby="headingTwo" data-parent="#accordionExample">
+				<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseTwoOne" aria-expanded="false" aria-controls="collapseTwoOne">
+				  第一分编&nbsp;&nbsp;&nbsp;通则
+				</button>
+			</div>
+			<div class="row collapse" id="collapseTwoOne" aria-labelledby="headingTwoOne" data-parent="#accordionExample">
+				<div class="col-sm border">
+					<a href="page/part2/chapter1.html" target="_blank" class="text-dark">第一章<br />一般规定</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part2/chapter2.html" target="_blank" class="text-dark">第二章<br />物权的设立、变更、转让和消灭</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part2/chapter3.html" target="_blank" class="text-dark">第三章<br />物权的保护</a>
+				</div>
+			</div>
+			<div class="row border" id="collapseTwo" aria-labelledby="headingTwo" data-parent="#accordionExample">
+				<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseTwoTwo" aria-expanded="false" aria-controls="collapseTwoTwo">
+				  第二分编&nbsp;&nbsp;&nbsp;所有权
+				</button>
+			</div>
+			<div class="row collapse" id="collapseTwoTwo" aria-labelledby="headingTwoTwo" data-parent="#accordionExample">
+				<div class="col-sm border">
+					<a href="page/part2/chapter4.html" target="_blank" class="text-dark">第四章<br />一般规定</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part2/chapter5.html" target="_blank" class="text-dark">第五章<br />国家所有权和集体所有权、私人所有权</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part2/chapter6.html" target="_blank" class="text-dark">第六章<br />业主的建筑物区分所有权</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part2/chapter7.html" target="_blank" class="text-dark">第七章<br />相邻关系</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part2/chapter8.html" target="_blank" class="text-dark">第八章<br />共有</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part2/chapter9.html" target="_blank" class="text-dark">第九章<br />所有权取得的特别规定</a>
+				</div>
+			</div>
+			<div class="row border" id="collapseTwo" aria-labelledby="headingTwo" data-parent="#accordionExample">
+				<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseTwoThree" aria-expanded="false" aria-controls="collapseTwoThree">
+				  第三分编&nbsp;&nbsp;&nbsp;用益物权
+				</button>
+			</div>
+			<div class="row collapse" id="collapseTwoThree" aria-labelledby="headingTwoThree" data-parent="#accordionExample">
+				<div class="col-sm border">
+					<a href="page/part2/chapter10.html" target="_blank" class="text-dark">第十章<br />一般规定</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part2/chapter11.html" target="_blank" class="text-dark">第十一章<br />土地承包经营权</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part2/chapter12.html" target="_blank" class="text-dark">第十二章<br />建设用地使用权</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part2/chapter13.html" target="_blank" class="text-dark">第十三章<br />宅基地使用权</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part2/chapter14.html" target="_blank" class="text-dark">第十四章<br />居住权</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part2/chapter15.html" target="_blank" class="text-dark">第十五章<br />地役权</a>
+				</div>
+			</div>
+			<div class="row border" id="collapseTwo" aria-labelledby="headingTwo" data-parent="#accordionExample">
+				<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseTwoFour" aria-expanded="false" aria-controls="collapseTwoFour">
+				  第四分编&nbsp;&nbsp;&nbsp;担保物权
+				</button>
+			</div>
+			<div class="row collapse" id="collapseTwoFour" aria-labelledby="headingTwoFour" data-parent="#accordionExample">
+				<div class="col-sm border">
+					<a href="page/part2/chapter16.html" target="_blank" class="text-dark">第十六章<br />一般规定</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part2/chapter17.html" target="_blank" class="text-dark">第十七章<br />抵押权</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part2/chapter18.html" target="_blank" class="text-dark">第十八章<br />质权</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part2/chapter19.html" target="_blank" class="text-dark">第十九章<br />留置权</a>
+				</div>				
+			</div>
+			<div class="row border" id="collapseTwo" aria-labelledby="headingTwo" data-parent="#accordionExample">
+				<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseTwoFive" aria-expanded="false" aria-controls="collapseTwoFive">
+				  第五分编&nbsp;&nbsp;&nbsp;占有
+				</button>
+			</div>
+			<div class="row collapse" id="collapseTwoFive" aria-labelledby="headingTwoFive" data-parent="#accordionExample">
+				<div class="col-sm border">
+					<a href="page/part2/chapter20.html" target="_blank" class="text-dark">第二十章<br />占有</a>
+				</div>
+			</div>
+			<div class="row border mt-4 p-2">
+				第三编&nbsp;&nbsp;&nbsp;合同
+			</div>
+			<div class="row border" data-toggle="collapse" data-target="#collapseThreeOne" aria-expanded="false" aria-controls="collapseThreeOne">
+				<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseThreeOne" aria-expanded="false" aria-controls="collapseThreeOne">
+				  第一分编&nbsp;&nbsp;&nbsp;通则
+				</button>
+			</div>
+			<div class="row collapse" id="collapseThreeOne" aria-labelledby="headingThreeOne" data-parent="#accordionExample">
+				<div class="col-sm border">
+					<a href="page/part3/chapter1.html" target="_blank" class="text-dark">第一章<br />一般规定</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part3/chapter2.html" target="_blank" class="text-dark">第二章<br />合同的订立</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part3/chapter3.html" target="_blank" class="text-dark">第三章<br />合同的效力</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part3/chapter4.html" target="_blank" class="text-dark">第四章<br />合同的履行</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part3/chapter5.html" target="_blank" class="text-dark">第五章<br />合同的保全</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part3/chapter6.html" target="_blank" class="text-dark">第六章<br />合同的变更和转让</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part3/chapter7.html" target="_blank" class="text-dark">第七章<br />合同的权利义务终止</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part3/chapter8.html" target="_blank" class="text-dark">第八章<br />违约责任</a>
+				</div>
+			</div>
+			<div class="row border" data-toggle="collapse" data-target="#collapseThreeTwo" aria-expanded="false" aria-controls="collapseThreeTwo">
+				<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseThreeTwo" aria-expanded="false" aria-controls="collapseThreeTwo">
+				  第二分编&nbsp;&nbsp;&nbsp;典型合同
+				</button>
+			</div>
+			<div class="collapse" id="collapseThreeTwo" aria-labelledby="headingThreeTwo" data-parent="#accordionExample">
+			<div class="row">
+					<div class="col-sm border">
+						<a href="page/part3/chapter9.html" target="_blank" class="text-dark">第九章<br />买卖合同</a>
+					</div>
+					<div class="col-sm border">
+						<a href="page/part3/chapter10.html" target="_blank" class="text-dark">第十章<br />供用电、水、气、热力合同</a>
+					</div>
+					<div class="col-sm border">
+						<a href="page/part3/chapter11.html" target="_blank" class="text-dark">第十一章<br />赠与合同</a>
+					</div>
+					<div class="col-sm border">
+						<a href="page/part3/chapter12.html" target="_blank" class="text-dark">第十二章<br />借款合同</a>
+					</div>
+					<div class="col-sm border">
+						<a href="page/part3/chapter13.html" target="_blank" class="text-dark">第十三章<br />保证合同</a>
+					</div>
+					<div class="col-sm border">
+						<a href="page/part3/chapter14.html" target="_blank" class="text-dark">第十四章<br />租赁合同</a>
+					</div>
+					<div class="col-sm border">
+						<a href="page/part3/chapter15.html" target="_blank" class="text-dark">第十五章<br />融资租赁合同</a>
+					</div>
+					<div class="col-sm border">
+						<a href="page/part3/chapter16.html" target="_blank" class="text-dark">第十六章<br />保理合同</a>
+					</div>
+					<div class="col-sm border">
+						<a href="page/part3/chapter17.html" target="_blank" class="text-dark">第十七章<br />承揽合同</a>
+					</div>
+					<div class="col-sm border">
+						<a href="page/part3/chapter18.html" target="_blank" class="text-dark">第十八章<br />建设工程合同</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm border">
+						<a href="page/part3/chapter19.html" target="_blank" class="text-dark">第十九章<br />运输合同</a>
+					</div>
+					<div class="col-sm border">
+						<a href="page/part3/chapter20.html" target="_blank" class="text-dark">第二十章<br />技术合同</a>
+					</div>
+					<div class="col-sm border">
+						<a href="page/part3/chapter21.html" target="_blank" class="text-dark">第二十一章<br />保管合同</a>
+					</div>
+					<div class="col-sm border">
+						<a href="page/part3/chapter22.html" target="_blank" class="text-dark">第二十二章<br />仓储合同</a>
+					</div>
+					<div class="col-sm border">
+						<a href="page/part3/chapter23.html" target="_blank" class="text-dark">第二十三章<br />委托合同</a>
+					</div>
+					<div class="col-sm border">
+						<a href="page/part3/chapter24.html" target="_blank" class="text-dark">第二十四章<br />物业服务合同</a>
+					</div>
+					<div class="col-sm border">
+						<a href="page/part3/chapter25.html" target="_blank" class="text-dark">第二十五章<br />行纪合同</a>
+					</div>
+					<div class="col-sm border">
+						<a href="page/part3/chapter26.html" target="_blank" class="text-dark">第二十六章<br />中介合同</a>
+					</div>
+					<div class="col-sm border">
+						<a href="page/part3/chapter27.html" target="_blank" class="text-dark">第二十七章<br />合伙合同</a>
+					</div>
+				</div>
+			</div>
+			<div class="row border" data-toggle="collapse" data-target="#collapseThreeThree" aria-expanded="false" aria-controls="collapseThreeThree">
+				<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseThreeThree" aria-expanded="false" aria-controls="collapseThreeThree">
+				  第三分编&nbsp;&nbsp;&nbsp;准合同
+				</button>
+			</div>
+			<div class="row collapse" id="collapseThreeThree" aria-labelledby="headingThreeThree" data-parent="#accordionExample">
+				<div class="col-sm border">
+					<a href="page/part3/chapter28.html" target="_blank" class="text-dark">第二十八章<br />无因管理</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part3/chapter29.html" target="_blank" class="text-dark">第二十九章<br />不当得利</a>
+				</div>
+			</div>
+			<div class="row border mt-4">
+				<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+				  第四编&nbsp;&nbsp;&nbsp;人格权
+				</button>
+			</div>
+			<div class="row collapse" id="collapseFour" aria-labelledby="headingFour" data-parent="#accordionExample">
+				<div class="col-sm border">
+					<a href="page/part4/chapter1.html" target="_blank" class="text-dark">第一章<br />一般规定</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part4/chapter2.html" target="_blank" class="text-dark">第二章<br />生命权、身体权和健康权</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part4/chapter3.html" target="_blank" class="text-dark">第三章<br />姓名权和名称权</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part4/chapter4.html" target="_blank" class="text-dark">第四章<br />肖像权</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part4/chapter5.html" target="_blank" class="text-dark">第五章<br />名誉权和荣誉权</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part4/chapter6.html" target="_blank" class="text-dark">第六章<br />隐私权和个人信息保护</a>
+				</div>
+			</div>
+			<div class="row border mt-4">
+				<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+				  第五编&nbsp;&nbsp;&nbsp;婚姻家庭
+				</button>
+			</div>
+			<div class="row collapse" id="collapseFive" aria-labelledby="headingFive" data-parent="#accordionExample">
+				<div class="col-sm border">
+					<a href="page/part5/chapter1.html" target="_blank" class="text-dark">第一章<br />一般规定</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part5/chapter2.html" target="_blank" class="text-dark">第二章<br />结婚</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part5/chapter3.html" target="_blank" class="text-dark">第三章<br />家庭关系</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part5/chapter4.html" target="_blank" class="text-dark">第四章<br />离婚</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part5/chapter5.html" target="_blank" class="text-dark">第五章<br />收养</a>
+				</div>
+			</div>
+			<div class="row border mt-4">
+				<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+				  第六编&nbsp;&nbsp;&nbsp;继承
+				</button>
+			</div>
+			<div class="row collapse" id="collapseSix" aria-labelledby="headingSix" data-parent="#accordionExample">
+				<div class="col-sm border">
+					<a href="page/part6/chapter1.html" target="_blank" class="text-dark">第一章<br />一般规定</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part6/chapter2.html" target="_blank" class="text-dark">第二章<br />法定继承</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part6/chapter3.html" target="_blank" class="text-dark">第三章<br />遗嘱继承和遗赠</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part6/chapter4.html" target="_blank" class="text-dark">第四章<br />遗产的处理</a>
+				</div>
+			</div>
+			<div class="row border mt-4">
+				<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+				  第七编&nbsp;&nbsp;&nbsp;侵权责任
+				</button>
+			</div>
+			<div class="row collapse" id="collapseSeven" aria-labelledby="headingSeven" data-parent="#accordionExample">
+				<div class="col-sm border">
+					<a href="page/part7/chapter1.html" target="_blank" class="text-dark">第一章<br />一般规定</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part7/chapter2.html" target="_blank" class="text-dark">第二章<br />损害赔偿</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part7/chapter3.html" target="_blank" class="text-dark">第三章<br />责任主体的特殊规定</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part7/chapter4.html" target="_blank" class="text-dark">第四章<br />产品责任</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part7/chapter5.html" target="_blank" class="text-dark">第五章<br />机动车交通事故责任</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part7/chapter6.html" target="_blank" class="text-dark">第六章<br />医疗损害责任</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part7/chapter7.html" target="_blank" class="text-dark">第七章<br />环境污染和生态破坏责任</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part7/chapter8.html" target="_blank" class="text-dark">第八章<br />高度危险责任</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part7/chapter9.html" target="_blank" class="text-dark">第九章<br />饲养动物损害责任</a>
+				</div>
+				<div class="col-sm border">
+					<a href="page/part7/chapter10.html" target="_blank" class="text-dark">第十章<br />建筑物和物件损害责任</a>
+				</div>
+			</div>
+			<div class="row border mt-4">
+				<a class="btn btn-link btn-block text-left" target="_blank" href="page/part8.html">
+				  附则
+				</a>
+			</div>
+		</div>
+		<!-- 目录导航板块 -->
+		<!-- 页脚部分 -->
+		<!-- 页脚部分 -->
+		<footer style="height: 20rem;" class="mt-2">
+			<div style="background-color: #737373; height: 20rem;">
+				<p class="text-center text-info">
+					友情链接：<br />
+				</p>
+				<hr />
+				<p class="text-center">
+					<a class=" text-white" href="">中国人民法院</a>
+				</p>
+				<hr />
+				<p class="text-center text-white">
+					<a class=" text-white" href="">最高人民法院</a>
+				</p>
+				<hr />
+				<p class="text-center text-white">
+					<a class=" text-white" href="">裁判文书网</a>
+				</p>
+				<hr />
+				<div class="m-auto" style="width: 70px; margin: 100px;">
+					<a href="laws.html"><img src="./image/logo_1.png" style="width: 90px;height: 90px;" /></a>
+				</div>
+			</div>
+		</footer>
+				<!-- 页脚部分 -->
+		<!-- <footer style="background-color: #0B183D; color: #79C940;" class="my-2 py-5 text-white">
+			<div class="row pl-5 py-5">
+				<div class="col-4">
+					<div class="row">友情链接：</div>
+					<div class="row"><a href="">中国人民法院</a></div>
+					<div class="row"><a href="">最高人民法院</a></div>
+					<div class="row"><a href="">裁判文书网</a></div>
+				</div>
+				<div class="col-4">
+					<div class="row"></div>
+				</div>
+				<div class="col-4"></div>
+			</div>
+				<div class="m-auto" style="width: 11.9375rem; margin: 100px;">
+					<a href="asddsa.html"><img src="../image/logo_1.png" /></a>
+				</div>
+		</footer> -->
+		<!-- 页脚部分 -->
+	</body>
+	<script>
+		$(document).ready(function () {
+			flashPassage();
+			//检查是否登陆过
+			$.ajax({
+				url:getRootPath()+"isInSession",
+				method: "POST",
+				dataType: "json",
+				success: function (res) {
+					console.log(res);
+					console.log(res.user);
+					if (res.user!=="null") {
+						$("#loginDisplay").html("欢迎登陆，"+res.user);
+						$("#quit").text("退出");
+					} else {
+						console.log(res.user);
+					}
+				}
+			});
+			//退出按钮
+			$("#quit").click(function () {
+				$.ajax({
+					url:getRootPath()+"quit",
+					type: "get",
+					dataType:"json",
+					success:function (){
+						console.log("quit success");
+						$("#loginDisplay").html("\t\t\t\t\t<li class=\"nav-item active border-right border-white\">\n" +
+								"\t\t\t\t\t\t<a class=\"badge text-white\" href=\"login/login_in.html\" target=\"_blank\">登录</a>\n" +
+								"\t\t\t\t\t</li>\n" +
+								"\t\t\t\t\t<li class=\"nav-item active\">\n" +
+								"\t\t\t\t\t\t<a class=\"badge  text-white\" href=\"login/login_on.html\" target=\"_blank\">注册</a>\n" +
+								"\t\t\t\t\t</li>");
+						$("#quit").text("");
+					}
+				});
+			});
+		});
+		//刷新推荐文章
+		function flashPassage() {
+			$.ajax({
+				url:getRootPath()+"passage.json",
+				method:"GET",
+				dataType:"json",
+				success:function (res) {
+					let html = '';
+					console.log(res);
+					res.forEach(function (item,index){
+						html+=("  <a href=\""+item.source_url+"\" target=\"_blank\" class=\"list-group-item list-group-item-action\">\n" +
+								"    <div class=\"d-flex w-100 justify-content-between\">\n" +
+								"      <h5 class=\"mb-1\">"+item.title+"</h5>\n" +
+								"      <small>"+item.publish_date+"</small>\n" +
+								"   </div>\n" +
+								"    <p class=\"mb-1 text-truncate\">"+item.general_content+"</p>\n" +
+								"    <small>"+item.source_name+"</small>\n" +
+								"  </a>");
+						console.log(item);
+					});
+					$("#recommend_passage").html(html);
+				}
+			});
+		}
+		$("#flashPassage").click(function (){
+			flashPassage();
+		});
+		//获得项目路径
+		function getRootPath(){
+			//获取当前网址
+			var curWwwPath=window.document.location.href;
+			//获取主机地址之后的目录
+			var pathName=window.document.location.pathname;
+			var pos=curWwwPath.indexOf(pathName);
+			//获取主机地址
+			var localhostPaht=curWwwPath.substring(0,pos);
+			//获取带"/“的项目名
+			var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);
+			return(localhostPaht+projectName+"/");
+		}
+		//搜索按钮1
+		$("#searchBtn1").click(function () {
+			let keyword = document.getElementById("input1").value;
+			if (checkService.isChinese(keyword)&&!checkService.isEmpty(keyword)) {
+				window.location.href="search/result.html?keyword="+keyword;
+			} else {
+				alert("输入为空或不是汉字!");
+			}
+		});
+	</script>
 </html>

@@ -17,28 +17,30 @@ public class JdbcUtils {
     private static String DB_URL;
     private static String DB_DRIVER;
     private static Connection DB;
-    private static String TABLE_NAME = "laws";
-    private static ComboPooledDataSource CPDS;
+    private static String DB_NAME = "laws_system";
+//    private static ComboPooledDataSource CPDS;
 
     static {
+        //加载配置文件
         ResourceBundle resourceBundle =ResourceBundle.getBundle("jdbc");
-        CPDS = new ComboPooledDataSource();
         try {
-            //加载驱动
+
             DB_DRIVER = resourceBundle.getString("DB_DRIVER");
+            //加载驱动
             Class.forName(DB_DRIVER);
             //获取配置文件的设置
-            DB_URL= resourceBundle.getString("DB_URL")+TABLE_NAME;
+            DB_URL= resourceBundle.getString("DB_URL")+DB_NAME;
             DB_USER = resourceBundle.getString("DB_USER");
             DB_PASSWORD = resourceBundle.getString("DB_PASSWORD");
 
-            CPDS.setDriverClass(DB_DRIVER);
-            CPDS.setJdbcUrl(DB_URL);
-            CPDS.setUser(DB_USER);
-            CPDS.setPassword(DB_PASSWORD);
-
-            DB = CPDS.getConnection();
-        } catch (ClassNotFoundException | SQLException | PropertyVetoException e) {
+//            CPDS.setDriverClass(DB_DRIVER);
+//            CPDS.setJdbcUrl(DB_URL);
+//            CPDS.setUser(DB_USER);
+//            CPDS.setPassword(DB_PASSWORD);
+//
+//            DB = CPDS.getConnection();
+            DB = DriverManager.getConnection(DB_URL,DB_USER,DB_PASSWORD);
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }

@@ -57,7 +57,7 @@ public class checkCode extends HttpServlet {
         resp.setHeader("Pragma", "no-cache");
         resp.setContentType("image/jpeg");
         String capText = this.kaptchaProducer.createText();
-        req.getSession().setAttribute(this.sessionKeyValue, capText);
+        req.getSession().setAttribute("sessionKeyValue", capText);
         req.getSession().setAttribute(this.sessionKeyDateValue, new Date());
         BufferedImage bi = this.kaptchaProducer.createImage(capText);
         System.out.println(capText);

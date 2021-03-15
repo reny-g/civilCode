@@ -1,10 +1,389 @@
-body {
-    font-family: "Microsoft YaHei UI";
+/*默认样式*/
+html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select {
+    margin: 0;
+    padding: 0;
+    Font-family:  Helvetica, Tahoma, Arial, “Microsoft YaHei”, “微软雅黑”,
+    SimSun, “宋体”, STXihei, “华文细黑”, Heiti, “黑体”, sans-serif;
+    font-size: 16px;
+    color: black;
+    text-decoration:none;
 }
 
+* {
+    box-sizing: border-box;
+}
+.container {
+    margin-left: 60px;
+    margin-right: 0;
+    padding-right: 10px;
 
+}
 
 .showResult .item .head{
-    background-color: rgba(241,248,255,0.5);
-    color: rgba(3,102,217,1);
+
+}
+
+.showResult  {
+
+}
+
+.container .nav-item .my-disabled {
+    color: #6c757d;
+    pointer-events: none;
+    cursor: default;
+    padding-bottom: 0;
+    border-bottom: 2px solid #1654FE;
+}
+
+.container .appBar {
+    font-size: 50%;
+}
+
+.container .bottomNav {
+    font-size: 50%;
+}
+
+.head .a {
+    font-size: 80%;
+    font-weight: bold;
+}
+
+html, body {
+    min-height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+img {
+    border: none;
+    vertical-align: middle;
+}
+
+head a {
+    text-decoration: none;
+    color: blue;
+}
+
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+input, textarea {
+    outline: none;
+    border: none;
+}
+
+textarea {
+    resize: none;
+    overflow: auto;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.clearfix:after {
+    content: ".";
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    display: block;
+    clear: both;
+    overflow: hidden;
+}
+
+.fl {
+    float: left
+}
+
+.fr {
+    float: right
+}
+
+.tl {
+    text-align: left;
+}
+
+.tc {
+    text-align: center
+}
+
+.tr {
+    text-align: right;
+}
+
+.ellipse {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.inline {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+.body_con{
+    position: relative;
+    font-size: 0;
+}
+.body_top{
+    width: calc(100% - 200px);
+    height: 60px;
+    background: #347B98;
+    color: #fff;
+    font-size: 24px;
+    line-height: 60px;
+    text-align: center;
+    float: right;
+}
+.body_con_div{
+    width: 100%;
+}
+.body_left{
+    width:200px;
+    min-height: 100%;
+    display: inline-block;
+    vertical-align: top;
+    background:#333951;
+    position: relative;
+    font-size: 16px;
+    color: #fff;
+}
+.body_right{
+    width: calc(100% - 200px);
+    min-height: 100%;
+    display: inline-block;
+    vertical-align: top;
+    background:#f3faff;
+    font-size: 20px;
+    color: #999;
+    text-align: left;
+    float: right;
+}
+.body_right1{
+    background:#f3faff;
+    font-size: 20px;
+    color: #999;
+    text-align: left;
+}
+.body_left ul{
+    width: 100%;
+    min-height: 1px;
+    position: relative;
+}
+.body_left ul >li{
+    width: 100%;
+    overflow: hidden;
+}
+.body_left ul >li >label{
+    width: 100%;
+    height: 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    background:#292E41;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.body_left ul >li >label >span{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #fff;
+}
+.body_left ul >li >label >a{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.body_left ol{
+    width: 100%;
+    min-height: 1px;
+    position: relative;
+}
+.body_left ol >li{
+    width: 100%;
+    max-height: 50px;
+    overflow: hidden;
+    transition: all 0.5s;
+}
+.body_left ol >li >label{
+    width: 100%;
+    height: 50px;
+    background:#333951;
+    line-height: 50px;
+    position: relative;
+    transition: all 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+.body_left ol >li >label >a{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.body_left ol >li >label >div{
+    width:140px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    transition: all 0.5s;
+}
+.body_left ol >li >label >div >i{
+    font-size: 20px;
+    padding-left: 15px;
+    transition: all 0.5s;
+}
+.body_left ol >li >label >div >span{
+    font-size: 15px;
+    color: #a1a3ab;
+    width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    height: 50px;
+    line-height: 50px;
+    display: block;
+    padding-left: 5px;
+    transition: all 0.5s;
+}
+.body_left dl{
+    width: 100%;
+    min-height: 1px;
+}
+.body_left dl >li{
+    max-height: 40px;
+    transition: all 0.5s;
+    overflow: hidden;
+    position: relative;
+}
+.body_left dl >li >label{
+    width: 100%;
+    height: 40px;
+    background:#3a3e50;
+    line-height: 40px;
+    position: relative;
+    transition: all 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+.body_left dl >li >label span{
+    font-size:14px;
+    padding-left: 45px;
+    color: #a1a3ab;
+    width: 150px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    transition: all 0.5s;
+}
+.body_left dl >li >label >a{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.body_left ol >li:hover{
+    max-height: 3000px;
+}
+.body_left ol >li:hover >label{
+    background: #151b32;
+    border-left: 6px solid #1D8FF0;
+}
+.body_left ol >li:hover >label >i{
+    transform: rotate(90deg);
+}
+.body_left ol >li:hover >dl >li >label{
+    background: #3a3e50;
+}
+.body_left dl >li:hover >label >span{
+    color: #fff;
+}
+.body_left dl >li:hover .body_sanji{
+    display: flex;
+}
+/*三级样式*/
+.body_sanji{
+    min-width: 1px;
+    position: fixed;
+    top: 60px;
+    left: 200px;
+    display: none;
+}
+.body_sanji_div{
+    /*width: 150px;*/
+    height: 100%;
+    background: #fff;
+    position: relative;    color: #000;
+    font-size: 14px;
+    border-left: 5px solid #F3FAFF;
+}
+.body_sanji_div_bor{
+    width: 100%;
+    min-height: 1px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.body_sanji_div_bor >li{
+    width: 100%;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 22px;
+    transition: all 0.5s;
+    font-size: 14px;
+    position: relative;
+}
+.body_sanji_div_bor >li >span{
+    width: 90px;
+    height: 100%;
+    position: relative;
+    line-height: 35px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    transition: all 0.5s;
+}
+.body_sanji_div_bor >li >i{
+    font-size: 20px;
+}
+.body_sanji_div_bor >li >a{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.body_sanji_div_bor >li:hover{
+    color: #1d8ff0;
+    background: #E7E7E7;
 }

@@ -3,7 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="../bootstrap-4.5.0-dist/css/bootstrap.min.css">
+    <script src="../js/juqery.js"></script>
+    <script src="../js/inputValidate.js"></script>
 </head>
+<body class="pt-5">
 
+<div class="container align-self-center pt-5 border border-success">
+    <div class="top-nav text-center py-1">注册</div>
+    <div class="mid-body mx-auto w-25">
+        <form class="list-group">
+            <div class="list-group-item">
+                <label class="sr-only" for="userName">用户名</label>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">U</div>
+                    </div>
+                    <input type="text" class="form-control" id="userName" placeholder="用户名">
+                </div>
+            </div>
+            <div class="list-group-item">
+                <label class="sr-only" for="userPassword">密码</label>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">P</div>
+                    </div>
+                    <input type="text" class="form-control" id="userPassword" placeholder="密码">
+                </div>
+            </div>
+            <div class="list-group-item">
+                <label class="sr-only" for="dupPassword">密码</label>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">P</div>
+                    </div>
+                    <input type="text" class="form-control" id="dupPassword" placeholder="密码">
+                </div>
+            </div>
+            <div class="list-group-item form-inline">
+                <label class="sr-only" for="verifyCode">验证码</label>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">V</div>
+                    </div>
+                    <input type="text" class="form-control mr-1" id="verifyCode" placeholder="验证码">
+                    <div  class="text-center" alt="验证码" width="80" height="36">获取验证码</div>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="form-check mb-2">
+                    <div id="msg" class="small d-inline text-danger"></div>
+                </div>
+            </div>
+            <div class="col-auto">
+                <button id="register" type="button" class="btn btn-primary mb-2">注册</button>
+            </div>
+            <div class="col-auto">
+                <div class="small d-inline">已有账号？立即<a href="login_in.html">登录</a></div>
+                <div class="small d-inline"><a href="">忘记密码</a></div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<script>
+    function getRootPath(){
+        //获取当前网址
+        var curWwwPath=window.document.location.href;
+        //获取主机地址之后的目录
+        var pathName=window.document.location.pathname;
+        var pos=curWwwPath.indexOf(pathName);
+        //获取主机地址
+        var localhostPaht=curWwwPath.substring(0,pos);
+        //获取带"/“的项目名
+        var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);
+        return(localhostPaht+projectName+"/");
+    }
+    $("#register").click(function () {
+        let userName = document.getElementById("userName").value;
+        let userPassword = document.getElementById("userPassword").value;
+        let dupPassword = document.getElementById("dupPassword").value;
+        let verifyCode = "";
+        if (userPassword!==dupPassword) {
+            console.log(userPassword);
+            console.log(dupPassword);
+            $("#msg").text("两次密码不一致");
+        } else {
+            $.ajax({
+                type: "POST",
+                url: getRootPath()+"register",
+                async: false,
+                dataType: "json",
+                data:{
+                    "userName": userName,
+                    "userPassword": userPassword,
+                    "verifyCode": verifyCode
+                },
+                success:function (res) {
+                    if (res.msg==="registerSuccess") {
+                        alert("注册成功");
+                        window.location.href=getRootPath()+"login/login_in.html";
+                    } else {
+                        $("#msg").text("注册失败，该账号已存在");
+                    }
+                }
+            });
+        }
+    });
+</script>
 </body>
 </html>

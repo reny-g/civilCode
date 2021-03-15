@@ -5,30 +5,41 @@
     <title>Title</title>
     <link rel="stylesheet" href="../bootstrap-4.5.0-dist/css/bootstrap.min.css">
     <script src="../js/juqery.js"></script>
+    <script src="../js/inputValidate.js"></script>
 </head>
-<body>
+<body class="pt-5">
 
-<div class="container">
-    <div class="top-nav"></div>
-    <div class="mid-body align-self-center container">
-        <form action="/in">
-
-            <div class="col-3">
-                <label class="sr-only" for="inlineFormInputGroupName">用户名</label>
+<div class="container align-self-center pt-5 border border-success">
+    <div class="top-nav text-center py-1">登录</div>
+    <div class="mid-body mx-auto w-25">
+        <form class="list-group">
+            <div class="list-group-item">
+                <label class="sr-only" for="userName">用户名</label>
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
                         <div class="input-group-text">U</div>
                     </div>
-                    <input type="text" class="form-control" id="inlineFormInputGroupName" placeholder="用户名">
+                    <input type="text" class="form-control" id="userName" placeholder="用户名">
                 </div>
             </div>
-            <div class="col-3">
-                <label class="sr-only" for="inlineFormInputGroupPassword">密码</label>
+			<div class=""></div>
+            <div class="list-group-item">
+                <label class="sr-only" for="userPassword">密码</label>
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
                         <div class="input-group-text">P</div>
                     </div>
-                    <input type="text" class="form-control" id="inlineFormInputGroupPassword" placeholder="密码">
+                    <input type="password" class="form-control" id="userPassword" placeholder="密码">
+                </div>
+            </div>
+            <div class="list-group-item form-inline">
+                <label class="sr-only" for="verifyCode">验证码</label>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">V</div>
+                    </div>
+                    <input type="text" class="form-control mr-1" id="verifyCode" placeholder="验证码">
+                    <img id="img" alt="验证码" width="80" height="36" src="/cig/checkCode"/>
                 </div>
             </div>
             <div class="col-auto">
@@ -37,23 +48,63 @@
                     <label class="form-check-label" for="autoSizingCheck">
                         记住登录
                     </label>
+                    <div id="msg" class="small d-inline text-danger"></div>
                 </div>
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn btn-primary mb-2">登录</button>
+                <button id="signIn" type="button" class="btn btn-primary mb-2">登录</button>
             </div>
             <div class="col-auto">
-                <div class="small d-inline">没有账号？立即注册</div>
-                <div class="small d-inline">忘记密码</div>
+                <div class="small d-inline">没有账号？立即<a href="login_on.html">注册</a></div>
+                <div class="small d-inline"><a href="">忘记密码</a></div>
             </div>
 
         </form>
     </div>
 </div>
-<img id="img" alt="验证码" width="100" height="36" src="/cig/checkCode" />
 <script>
     $("#img").click(function (){
         this.src+=("?id="+Math.random());
+    });
+    function getRootPath(){
+        //获取当前网址
+        var curWwwPath=window.document.location.href;
+        //获取主机地址之后的目录
+        var pathName=window.document.location.pathname;
+        var pos=curWwwPath.indexOf(pathName);
+        //获取主机地址
+        var localhostPaht=curWwwPath.substring(0,pos);
+        //获取带"/“的项目名
+        var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);
+        return(localhostPaht+projectName+"/");
+    }
+    $("#signIn").click(function () {
+        let userName = document.getElementById("userName").value;
+        let userPassword = document.getElementById("userPassword").value;
+        let verifyCode = document.getElementById("verifyCode").value;
+
+        $.ajax({
+            type: "POST",
+            url: getRootPath()+"signIn",
+            async: false,
+            dataType: "json",
+            data:{
+              "userName": userName,
+              "userPassword": userPassword,
+              "verifyCode": verifyCode
+            },
+            success:function (res) {
+                console.log(res);
+                if (res.msg==="userError") {
+                    $("#msg").text("用户名或密码错误");
+                } else if(res.msg==="verError") {
+                    $("#msg").text("验证码错误");
+                }  else {
+                    $("#msg").text("登陆成功");
+                    window.location.href=getRootPath()+"index.html";
+                }
+            }
+        });
     });
 </script>
 </body>
