@@ -12,18 +12,23 @@ public class Law {
     String partName = " ";
     String subPart = " ";
     String subPartName = " ";
+    String chapter = "";
+    String chapterName = "";
     String section = " ";
     String sectionName = " ";
     String content = " ";
     String contentName = " ";
 
-    public Law(int id,String part, String partName, String subPart, String subPartName,
-               String section, String sectionName, String content, String contentName) {
-        this.id=id;
+    public Law(int id, String part, String partName, String subPart, String subPartName,
+               String chapter, String chapterName, String section, String sectionName,
+               String content, String contentName) {
+        this.id = id;
         this.part = part;
         this.partName = partName;
         this.subPart = subPart;
         this.subPartName = subPartName;
+        this.chapter = chapter;
+        this.chapterName = chapterName;
         this.section = section;
         this.sectionName = sectionName;
         this.content = content;
@@ -68,6 +73,22 @@ public class Law {
 
     public void setSubPartName(String subPartName) {
         this.subPartName = subPartName;
+    }
+
+    public String getChapter() {
+        return chapter;
+    }
+
+    public void setChapter(String chapter) {
+        this.chapter = chapter;
+    }
+
+    public String getChapterName() {
+        return chapterName;
+    }
+
+    public void setChapterName(String chapterName) {
+        this.chapterName = chapterName;
     }
 
     public String getSection() {

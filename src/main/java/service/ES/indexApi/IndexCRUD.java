@@ -75,24 +75,34 @@ public class IndexCRUD {
         {
             builder.startObject("properties");
             {
-                //ID文档字段
-                builder.startObject("id");
-                {
-                    builder.field("type", "long");
-                }
-                builder.endObject();
-                //创建content文档字段
-                builder.startObject("content");
-                {
-                    builder.field("type", "text")
-                            //插入时分词
-                            .field("analyzer", "ik_smart")
-                            //搜索时分词
-                            .field("search_analyzer", "ik_max_word");
-                }
-                builder.endObject();
-                //创建contentName文档字段
-                builder.startObject("contentName");
+//                //ID文档字段
+//                builder.startObject("id");
+//                {
+//                    builder.field("type", "long");
+//                }
+//                builder.endObject();
+//                //创建content文档字段
+//                builder.startObject("content");
+//                {
+//                    builder.field("type", "text")
+//                            //插入时分词
+//                            .field("analyzer", "ik_smart")
+//                            //搜索时分词
+//                            .field("search_analyzer", "ik_max_word");
+//                }
+//                builder.endObject();
+//                //创建contentName文档字段
+//                builder.startObject("contentName");
+//                {
+//                    builder.field("type", "text")
+//                            //插入时分词
+//                            .field("analyzer", "ik_max_word")
+//                            //搜索时分词
+//                            .field("search_analyzer", "ik_smart");
+//                }
+//                builder.endObject();
+                for (String field : fields) {
+                builder.startObject(field);
                 {
                     builder.field("type", "text")
                             //插入时分词
@@ -101,6 +111,7 @@ public class IndexCRUD {
                             .field("search_analyzer", "ik_smart");
                 }
                 builder.endObject();
+                }
             }
             builder.endObject();
         }
@@ -113,7 +124,9 @@ public class IndexCRUD {
         //注：以下内容还未实现自动化，比如从resultset中获得的行数是固定的，oneLw对象也是固定的
         int j=0;
         while (resultSet.next()) {
+
             OneLaw oneLaw = new OneLaw(resultSet.getInt(fields[0]),resultSet.getString(fields[1]),resultSet.getString(fields[2]));
+            
             indexRequest.source(new Gson().toJson(oneLaw), XContentType.JSON)
                         .id(String.valueOf(resultSet.getInt(fields[0])));
             System.out.println(new Gson().toJson(oneLaw));

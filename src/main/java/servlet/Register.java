@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import domain.User;
 import service.user.UserService;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,7 +29,7 @@ import java.util.Map;
             Map<String,Object> map = new HashMap<>(2);
 
             try {
-                if (new UserService().register(new User(name,password))==1) {
+                if (new UserService().register(new User())==1) {
                     map.put("msg","registerSuccess");
                 } else {
                     map.put("msg","registerFailed");

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--mapper动态sql中，该namespace路径与mapper的类路径应该一致-->
+<mapper namespace="mapper.UserMapper">
+
+    <resultMap id="userResultMap" type="domain.User">
+        <result property="userEmail" column="user_email"/>
+        <result property="userPhone" column="user_phone"/>
+        <result property="userPassword" column="user_password"/>
+    </resultMap>
+    <insert id="insertUser" parameterType="domain.User">
+        insert into db_user(user_id, user_phone, user_password, user_nickname, user_qq, user_wechat, user_email)
+        values(null, #{userPhone}, #{userPassword}, #{userName}, #{userQq}, #{userWeChat}, #{userEmail})
+    </insert>
+
+    <select id="queryUser" parameterType="domain.User" resultType="domain.User">
+        select user_qq as userQq, user_wechat as userWeChat, user_nickname as userName, user_phone as userPhone,
+               user_email as userEmail from db_user
+        <trim prefix="where" suffixOverrides="and">
+            <if test="userPassword != null">user_password = #{userPassword} and</if>
+            <if test="userPhone != null">user_phone = #{userPhone}</if>
+            <if test="userEmail != null">user_email = #{userEmail}</if>
+        </trim>
+    </select>
+
+    <update id="updateUser" parameterType="domain.User">
+        update db_user
+        <trim prefix="set" suffixOverrides=",">
+            <if test="userPassword != null">user_password = #{userPassword},</if>
+            <if test="userQq != null">user_qq = #{userQq},</if>
+            <if test="userWeChat != null">user_wechat = #{userWeChat},</if>
+            <if test="userName != null">user_nickname = #{userName},</if>
+        </trim>
+        <where>
+            <if test="userPhone != null">user_phone = #{userPhone}</if>
+            <if test="userEmail != null">user_email = #{userEmail}</if>
+        </where>
+    </update>
+
+    <select id="queryUserAccount" parameterType="domain.User" resultType="java.lang.Boolean">
+        select user_id from db_user
+        <where>
+            <if test="userPhone != null">user_phone = #{userPhone}</if>
+            <if test="userEmail != null">user_email = #{userEmail}</if>
+        </where>
+    </select>
+</mapper>

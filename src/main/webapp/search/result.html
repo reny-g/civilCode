@@ -101,12 +101,14 @@
     let pageSize = 13;
     let currentPage = 1;
     let searchResult;
+    let record_returnData_number = 0;
     //图标异步获取
     var myChart = echarts.init(document.getElementById('main'));
     $(document).ready(function () {
         keyword = getUrlQueryString().keyword;
         console.log(keyword);
-        myChart.showLoading();flashJqpage();
+        myChart.showLoading();
+        flashJqpage();
         //顺序不能变（垃圾代码）
         flashSearchResult();
         flashSearchInfo();
@@ -129,7 +131,6 @@
             flashChartJson();
         } else {
             alert("输入为空或不是汉字!");
-            return ;
         }
     });
     function getRootPath(){
@@ -159,6 +160,9 @@
                         '<div class="body  border-success" style="min-height: 48px;" >'+'<a>'+item.content+'</a>'+item.contentName+'</div>'+
                         '</div>');
                 });
+                if (res.length == 0) {
+                    html = "<h2>没有搜索到相关结果，换个关键词吧！</h2>"
+                }
                 $("#laws").html(html);
                 searchResult = res;
                 flashContent();
@@ -182,9 +186,12 @@
             success:function (res) {
                 let html = '';
                 totalNum = res.totalNum;
+                record_returnData_number = totalNum;
                 console.log(res);
                 $("#totalResult").text("共"+totalNum+"条结果");
-                $("#duration").text("(用时"+res.time+"秒)")
+                $("#duration").text("(用时"+res.time+"秒)");
+                //搜索结果数为0则关闭图表
+
             }
         });
     }
@@ -217,7 +224,7 @@
             }
         });
     }
-    //标题文本
+    //标题（每一行前的那个目录结构）文本
     function flashContent() {
         $.ajax({
             url:getRootPath()+"content.json",
@@ -268,71 +275,30 @@
 
     // 该函数设置了三个图表
     function flashChartJson() {
-        $.ajax({
-            type: "GET",
-            url: getRootPath()+"echart.json",
-            async: false,
-            dataType: "json",
-            success:function (data) {
-                myChart.hideLoading();
-                console.log(data);
-                myChart.setOption({
-                    tooltip: {
-                        trigger: 'item',
-                        formatter: '{a} <br/>{b}: {c} ({d}%)'
-                    },
-                    //
-                    legend: {
-                        orient: 'horizontal',
-                        left: 7,
-                        bottom: 2,
-                        data: [
-                            {name: '第一编　总则', value: data.fone},
-                            {name: '第二编　物权', value: data.two},
-                            {name: '第三编　合同', value: data.three},
-                            {name: '第四编　人格权', value: data.four},
-                            {name: '第五编　婚姻家庭', value: data.five},
-                            {name: '第六编　继承', value: data.six},
-                            {name: '第七编　侵权责任', value: data.seven}
-                        ]
-                    },
-                    series: [
-                        {
-                            name: '关键词分布',
-                            type: 'pie',
-                            radius: '50%',
-                            left: 12,
-                            label: {
-                                formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
-                                backgroundColor: '#eee',
-                                borderColor: '#aaa',
-                                borderWidth: 1,
-                                borderRadius: 4,
-                                rich: {
-                                    a: {
-                                        color: '#999',
-                                        lineHeight: 22,
-                                        align: 'center'
-                                    },
-                                    hr: {
-                                        borderColor: '#aaa',
-                                        width: '100%',
-                                        borderWidth: 0.5,
-                                        height: 0
-                                    },
-                                    b: {
-                                        fontSize: 12,
-                                        lineHeight: 33
-                                    },
-                                    per: {
-                                        color: '#eee',
-                                        backgroundColor: '#334455',
-                                        //标题框内外边距
-                                        padding: [2, 18],
-                                        borderRadius: 2
-                                    }
-                                }
-                            },
+        myChart = echarts.init(document.getElementById('main'));
+        myChart.hideLoading();
+        alert(record_returnData_number);
+        if (record_returnData_number === 0) {
+            // myChart.clear();
+            myChart.dispose();
+        } else {
+            $.ajax({
+                type: "GET",
+                url: getRootPath()+"echart.json",
+                async: false,
+                dataType: "json",
+                success:function (data) {
+                    console.log(data);
+                    myChart.setOption({
+                        tooltip: {
+                            trigger: 'item',
+                            formatter: '{a} <br/>{b}: {c} ({d}%)'
+                        },
+                        //
+                        legend: {
+                            orient: 'horizontal',
+                            left: 7,
+                            bottom: 2,
                             data: [
                                 {name: '第一编　总则', value: data.fone},
                                 {name: '第二编　物权', value: data.two},
@@ -342,11 +308,61 @@
                                 {name: '第六编　继承', value: data.six},
                                 {name: '第七编　侵权责任', value: data.seven}
                             ]
-                        }
-                    ]
-                });
-            }
-        });
+                        },
+                        series: [
+                            {
+                                name: '关键词分布',
+                                type: 'pie',
+                                radius: '50%',
+                                left: 12,
+                                label: {
+                                    formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+                                    backgroundColor: '#eee',
+                                    borderColor: '#aaa',
+                                    borderWidth: 1,
+                                    borderRadius: 4,
+                                    rich: {
+                                        a: {
+                                            color: '#999',
+                                            lineHeight: 22,
+                                            align: 'center'
+                                        },
+                                        hr: {
+                                            borderColor: '#aaa',
+                                            width: '100%',
+                                            borderWidth: 0.5,
+                                            height: 0
+                                        },
+                                        b: {
+                                            fontSize: 12,
+                                            lineHeight: 33
+                                        },
+                                        per: {
+                                            color: '#eee',
+                                            backgroundColor: '#334455',
+                                            //标题框内外边距
+                                            padding: [2, 18],
+                                            borderRadius: 2
+                                        }
+                                    }
+                                },
+                                data: [
+                                    {name: '第一编　总则', value: data.fone},
+                                    {name: '第二编　物权', value: data.two},
+                                    {name: '第三编　合同', value: data.three},
+                                    {name: '第四编　人格权', value: data.four},
+                                    {name: '第五编　婚姻家庭', value: data.five},
+                                    {name: '第六编　继承', value: data.six},
+                                    {name: '第七编　侵权责任', value: data.seven}
+                                ]
+                            }
+                        ]
+                    });
+                }
+            });
+        }
+
+
     }
 </script>
 </html>

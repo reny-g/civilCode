@@ -60,7 +60,7 @@ public class checkCode extends HttpServlet {
         req.getSession().setAttribute("sessionKeyValue", capText);
         req.getSession().setAttribute(this.sessionKeyDateValue, new Date());
         BufferedImage bi = this.kaptchaProducer.createImage(capText);
-        System.out.println(capText);
+        System.out.println("controller/checkCode:"+capText);
         ServletOutputStream out = resp.getOutputStream();
         ImageIO.write(bi, "jpg", out);
     }

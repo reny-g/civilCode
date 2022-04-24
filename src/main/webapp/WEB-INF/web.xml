@@ -4,4 +4,24 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+    <servlet-name>springmvc</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+<!--      mvc的配置文件-->
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:springMvc-config.xml</param-value>
+    </init-param>
+<!--      启动级别-->
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+<!-- 当用户请求localhost：8080/cig/*时此servlet会进行转发，若访问localhost：8080/cll/*则提示找不到资源
+/：会匹配所有除jsp外的请求-->
+<!--    /*：匹配所有请求，包括jsp页面-->
+  <servlet-mapping>
+    <servlet-name>springmvc</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
 </web-app>

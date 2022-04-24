@@ -2,7 +2,7 @@
 html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select {
     margin: 0;
     padding: 0;
-    Font-family:  Helvetica, Tahoma, Arial, “Microsoft YaHei”, “微软雅黑”,
+    Font-family:  “微软雅黑”,Helvetica, Tahoma, Arial, “Microsoft YaHei”,
     SimSun, “宋体”, STXihei, “华文细黑”, Heiti, “黑体”, sans-serif;
     font-size: 16px;
     color: black;

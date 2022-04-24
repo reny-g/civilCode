@@ -4,27 +4,75 @@ package domain;
  * @author 杨文俊
  */
 public class User {
-    String name = "";
-    String password = "";
+    int userId;
+    String userQq, userWeChat, userName, userPassword, userPhone, userEmail;
 
-    public User(String name, String password) {
-        this.name = name;
-        this.password = password;
+    public int getUserId() {
+        return userId;
     }
 
-    public String getName() {
-        return name;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getUserQq() {
+        return userQq;
     }
 
-    public String getPassword() {
-        return password;
+    public void setUserQq(String userQq) {
+        this.userQq = userQq;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getUserWeChat() {
+        return userWeChat;
+    }
+
+    public void setUserWeChat(String userWeChat) {
+        this.userWeChat = userWeChat;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
+
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", userQq='" + userQq + '\'' +
+                ", userWeChat='" + userWeChat + '\'' +
+                ", userName='" + userName + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", userPhone='" + userPhone + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                '}';
     }
 }

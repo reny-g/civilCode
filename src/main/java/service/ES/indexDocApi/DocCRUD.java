@@ -42,7 +42,7 @@ public class DocCRUD {
     public static SearchInfo searchInfo =null;
     //存储搜索结果
     public static List<Map<String,Object>> searchResult = null;
-    //存储搜索信息
+    //存储搜索关键词
     static String keyword=null;
     static int pageSize = 0;
 
@@ -89,6 +89,14 @@ public class DocCRUD {
         }
     }
 
+    /**
+     * 普通搜索，现以废弃，为初始版本
+     * @param keyword
+     * @param pageNo
+     * @param pageSize
+     * @return
+     * @throws IOException
+     */
     public List<Map<String,Object>> search(String keyword,int pageNo,int pageSize) throws IOException {
         if (pageNo<=1) {
             pageNo=1;
@@ -121,10 +129,21 @@ public class DocCRUD {
     return list;
     }
 
+    /**
+     * 实现高亮搜索功能
+     * @param keyword
+     * @param pageNo
+     * @param pageSize
+     *
+     *
+     * @return
+     * @throws IOException
+     */
     public List<Map<String,Object>> searchLighter(String keyword,int pageNo,int pageSize) throws IOException {
         if (pageNo<=1) {
             pageNo=1;
         }
+        System.out.println("--"+keyword+"--");
         DocCRUD.keyword = keyword;
 
         //获得索引
@@ -164,7 +183,7 @@ public class DocCRUD {
         TotalHits totalHits = hits.getTotalHits();
         long numHits = totalHits.value;
         searchInfo = new SearchInfo(response.getTook().secondsFrac(),(int)numHits);
-        System.out.println("searchinfo:"+searchInfo.getTotalNum()+"--"+searchInfo.getTime());
+        //System.out.println("searchinfo:"+searchInfo.getTotalNum()+"--"+searchInfo.getTime());
         //封装返回数据
         List<Map<String,Object>> list = new ArrayList<>();
         for (SearchHit documentFields: response.getHits().getHits()) {
@@ -180,7 +199,7 @@ public class DocCRUD {
                 }
                 //高亮字段替换原来的内容,每一个map中存放的都是一个文档（即一条记录）
                 sourceAsMap.put("contentName",nTitle);
-                //System.out.println(JSON.toJSON(sourceAsMap.get("id"))+nTitle);
+                System.out.println(JSON.toJSON(sourceAsMap.get("id"))+nTitle);
              }
             list.add(sourceAsMap);
         }

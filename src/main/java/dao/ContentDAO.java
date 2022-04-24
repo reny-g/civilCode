@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 /**
  * @author 吴仁杨
@@ -22,6 +23,7 @@ public class ContentDAO {
      * @throws SQLException
      */
     public Content queryContent(OneLaw law) throws SQLException {
+
         Connection connection = JdbcUtils.getConn();
         String sql = "select * from db_laws where id = ? ";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);

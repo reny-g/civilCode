@@ -41,13 +41,14 @@
       <scope>test</scope>
     </dependency>
 
-    <!--第三方验证码-->
+    <!--第三方生成图形验证码-->
     <dependency>
       <groupId>com.github.penggle</groupId>
       <artifactId>kaptcha</artifactId>
       <version>2.3.2</version>
     </dependency>
 
+    <!--    jsoup前端页面解析-->
     <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
     <dependency>
       <groupId>org.jsoup</groupId>
@@ -63,7 +64,7 @@
       <scope>provided</scope>
     </dependency>
 
-<!--    谷歌JSON化工具-->
+    <!--    谷歌JSON化工具-->
     <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
     <dependency>
       <groupId>com.google.code.gson</groupId>
@@ -71,7 +72,7 @@
       <version>2.8.5</version>
     </dependency>
 
-<!--    邮件服务-->
+    <!--    邮件服务-->
     <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
     <dependency>
       <groupId>org.apache.commons</groupId>
@@ -79,6 +80,7 @@
       <version>1.5</version>
     </dependency>
 
+    <!--    java中es的api-->
     <!-- https://mvnrepository.com/artifact/org.elasticsearch.client/transport -->
     <dependency>
       <groupId>org.elasticsearch.client</groupId>
@@ -100,7 +102,7 @@
       <version>7.6.1</version>
     </dependency>
 
-<!--    文件上传-->
+    <!--    文件上传-->
     <dependency>
       <groupId>commons-fileupload</groupId>
       <artifactId>commons-fileupload</artifactId>
@@ -114,7 +116,7 @@
       <version>2.6</version>
     </dependency>
 
-<!--    数据库驱动-->
+    <!--    数据库驱动-->
     <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
     <dependency>
       <groupId>mysql</groupId>
@@ -129,26 +131,37 @@
       <version>1.2.75</version>
     </dependency>
 
-<!--    数据库连接池-->
+    <!--    数据库连接池-->
     <!-- https://mvnrepository.com/artifact/com.mchange/c3p0 -->
     <dependency>
       <groupId>com.mchange</groupId>
       <artifactId>c3p0</artifactId>
       <version>0.9.5.2</version>
     </dependency>
+    <!--    &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api &ndash;&gt;-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.apache.logging.log4j</groupId>-->
+    <!--      <artifactId>log4j-api</artifactId>-->
+    <!--      <version>2.9.1</version>-->
+    <!--    </dependency>-->
 
-    <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+    <!--    &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core &ndash;&gt;-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.apache.logging.log4j</groupId>-->
+    <!--      <artifactId>log4j-core</artifactId>-->
+    <!--      <version>2.9.1</version>-->
+    <!--    </dependency>-->
+    <!--    日志相关-->
     <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-api</artifactId>
-      <version>2.9.1</version>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.17</version>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
     <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-core</artifactId>
-      <version>2.9.1</version>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>1.7.25</version>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -156,12 +169,12 @@
       <version>RELEASE</version>
       <scope>compile</scope>
     </dependency>
-      <dependency>
-          <groupId>org.testng</groupId>
-          <artifactId>testng</artifactId>
-          <version>RELEASE</version>
-          <scope>compile</scope>
-      </dependency>
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>RELEASE</version>
+      <scope>compile</scope>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -169,11 +182,104 @@
       <scope>compile</scope>
     </dependency>
 
+    <!--    mybatis框架-->
     <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
     <dependency>
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis</artifactId>
       <version>3.5.3</version>
+    </dependency>
+
+    <!--    mvc框架-->
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>5.2.13.RELEASE</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-core Spring环境 -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>5.2.13.RELEASE</version>
+    </dependency>
+
+    <!--Ioc容器-->
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>5.2.13.RELEASE</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+      <version>5.2.13.RELEASE</version>
+    </dependency>
+    <!--    spring 表达式？-->
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-expression -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-expression</artifactId>
+      <version>5.2.13.RELEASE</version>
+    </dependency>
+    <!--    AOP框架,但好像spring-aop可以代替下面那两个-->
+    <!-- https://mvnrepository.com/artifact/org.aspectj/aspectjrt -->
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjrt</artifactId>
+      <version>1.9.6</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>1.9.6</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+
+    <!--    spring的事务-->
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+      <version>5.2.13.RELEASE</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>5.2.13.RELEASE</version>
+    </dependency>
+    <!--    spring和mybatis之间的整合-->
+    <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis-spring</artifactId>
+      <version>2.0.6</version>
+    </dependency>
+
+    <!--返回JSON字符串的支持-->
+    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.12.1</version>
+    </dependency>
+
+    <!--    发送邮件以及邮件模板-->
+    <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-email</artifactId>
+      <version>1.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.freemarker</groupId>
+      <artifactId>freemarker</artifactId>
+      <version>2.3.28</version>
     </dependency>
 
   </dependencies>
